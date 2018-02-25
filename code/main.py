@@ -4,10 +4,10 @@ app = Flask(__name__)
 def suma(a,b):
 	return a+b
 
-@app.route("/")
-def hello():
+@app.route("/hello/<string:name>", methods=['GET'])
+def hello(name):
 	res=suma(3,2)
-    	return "Hello World! %s" % (res)
+    	return "Hello:  %s" % (name)
 
 
 if __name__ == "__main__":
