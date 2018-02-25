@@ -1,13 +1,15 @@
 from flask import Flask
+from flask import jsonify
+
 app = Flask(__name__)
 
-def suma(a,b):
-	return a+b
+def buildmessaje(name,hostname):
+	return "Hello "+name+" from "+hostname
 
 @app.route("/hello/<string:name>", methods=['GET'])
 def hello(name):
-	res=suma(3,2)
-    	return "Hello:  %s" % (name)
+	messaje=buildmessaje(name,'127.0.0.1')
+    	return jsonify(messaje)
 
 
 if __name__ == "__main__":
