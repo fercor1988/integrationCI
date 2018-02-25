@@ -4,7 +4,7 @@ pipeline {
   stages {
          stage('Connect-Repository-GitHub'){
                 steps{
-                  git pull: true, url: 'https://github.com/fercor1988/integrationCI.git'
+                  git poll: true, url: 'https://github.com/fercor1988/integrationCI.git'
                 }
          }
          stage('Create-Workspace-Virtual'){
