@@ -17,14 +17,14 @@ pipeline {
                       sh 'bash -c "virtualenv entorno_virtual && source entorno_virtual/bin/activate && pip install -r code/requirements.txt"'
                 }
          }
+         stage('Start-Application-TestUnit'){
+                steps{
+                      sh 'bash -c "virtualenv entorno_virtual && source entorno_virtual/bin/activate && pip install -r code/requirements.txt && cd code && pytest"'
+                }
+         }
          stage('Start-Application'){
                 steps{
                       sh 'bash -c "virtualenv entorno_virtual && source entorno_virtual/bin/activate && pip install -r code/requirements.txt && python code/main.py &"'
-                }
-         }
-         stage('Start-Application-TestUnit'){
-                steps{
-                      sh 'bash -c "virtualenv entorno_virtual && source entorno_virtual/bin/activate && pip install -r code/requirements.txt && python code/main.py & && cd code && pytest && cd .."'
                 }
          }
          stage('Delete-Image-Docker'){
